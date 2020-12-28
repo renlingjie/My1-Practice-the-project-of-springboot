@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Signin Template for Bootstrap</title>
+		<!-- Bootstrap框架（通过jar包导入的框架路径为："webjars+jar包内该文件的路径"） -->
+		<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}">
+		<!-- 自定义样式为静态资源，所以放在五个位置中任意位置，路径为"五个位置下该文件的路径" -->
+		<link rel="stylesheet" th:href="@{/asserts/css/signin.css}">
+	</head>
+
+	<body class="text-center">
+		<form class="form-signin" action="dashboard" method="post">
+			<!-- 图片为静态资源，所以放在五个位置中任意位置，路径为"五个位置下该文件的路径" -->
+			<img class="mb-4" th:src="@{/asserts/img/bootstrap-solid.svg}" alt="" width="72" height="72">
+			<h1 class="h3 mb-3 font-weight-normal" th:text="#{index.tip}">Please sign in</h1>
+			<!-- 判断只有当我们的msg中的内容不为空，说明密码错误，才会显示msg中的信息，否则不进行显示 th:if对其他th:拥有更
+			 高优先级。也就是说，如果th:if判断不成立，这个标签中的其他th都不会生效-->
+			<p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+			<label class="sr-only" th:text="#{index.username}">Username</label>
+			<input type="text" name="username" class="form-control" placeholder="Username" required="" autofocus="" th:placeholder="#{index.username}">
+			<label class="sr-only" th:text="#{index.password}">Password</label>
+			<input type="password" name="password" class="form-control" placeholder="Password" required="" th:placeholder="#{index.password}">
+			<div class="checkbox mb-3">
+				<label>
+          <input type="checkbox" value="remember-me" th:text="#{index.remeber}">
+        </label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{index.btn}">Sign in</button>
+			<p class="mt-5 mb-3 text-muted">© 2020-2021</p>
+			<a class="btn btn-sm" th:href="@{/index.html(XXX='zh_CN')}">中文</a>
+			<a class="btn btn-sm" th:href="@{/index.html(XXX='en_US')}">English</a>
+		</form>
+
+	</body>
+
+</html>
